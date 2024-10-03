@@ -168,9 +168,9 @@ namespace Lab_1
                 return;
             }
 
-            for (int i = 0; i <= x; i++)
+            for (int i = 0; i < x; i++)
             {
-                for(int j = 0; j <= x; j++)
+                for(int j = 1; j < x; j++)
                 {
                     Console.Write("*");
                 }
