@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -15,32 +15,32 @@ namespace Lab_1
             this.random = random;
         }
 
-        public static double Fraction(double x)
+        public double Fraction(double x)
         {
             return x - (int)x;
         }
 
-        public static int CharToNum(char x)
+        public  int CharToNum(char x)
         {
                 return x - '0';
         }
 
-        public static bool Is2Digits(int x) 
+        public  bool Is2Digits(int x) 
         {
             return x >= 10 && x <= 99;
         }
 
-        public static bool IsInRange(int a, int b, int num)
+        public  bool IsInRange(int a, int b, int num)
         {
             return (a <= num && num <= b) || (b <= num && num <= a);
         }
 
-        public static bool IsEqual(int a, int b, int c)
+        public  bool IsEqual(int a, int b, int c)
         {
             return a == b && b == c && c == a;
         }
 
-        public static int Abs(int x)
+        public  int Abs(int x)
         {
             if (x >= 0)
             {
@@ -52,7 +52,7 @@ namespace Lab_1
             }
         }
 
-        public static bool Is35(int x)
+        public  bool Is35(int x)
         {
             bool xxx = true;
 
@@ -70,7 +70,7 @@ namespace Lab_1
             }
         }
 
-        public static int Max3(int x, int y, int z)
+        public  int Max3(int x, int y, int z)
         {
             int max = x;
 
@@ -79,7 +79,7 @@ namespace Lab_1
             return max;
         }
 
-        public static int Sum2(int x, int y)
+        public  int Sum2(int x, int y)
         {
             int summ = x + y;
 
@@ -94,7 +94,7 @@ namespace Lab_1
             }
         }
 
-        public static String Day(int x)
+        public  String Day(int x)
         {
             switch (x)
             {
@@ -117,7 +117,7 @@ namespace Lab_1
             }
         }
 
-        public static String ListNums(int x)
+        public  String ListNums(int x)
         {
             String result = "";
             for (int i = 0; i <= x; i++)
@@ -127,7 +127,7 @@ namespace Lab_1
             return result;
         }
 
-        public static String Chet(int x)
+        public  String Chet(int x)
         {
             if (x < 0)
             {
@@ -142,7 +142,7 @@ namespace Lab_1
             return result;
         }
 
-        public static int NumLen(long x)
+        public  int NumLen(long x)
         {
             if (x < 0)
             {
@@ -160,7 +160,7 @@ namespace Lab_1
             return count == 0 ? 1 : count;
         }
 
-        public static void Square(int x)
+        public  void Square(int x)
         {
             if (x <= 0)
             {
@@ -178,7 +178,7 @@ namespace Lab_1
             }
         }
 
-        public static void RightTriangle(int x)
+        public  void RightTriangle(int x)
         {
             if (x <= 0)
             {
@@ -200,7 +200,7 @@ namespace Lab_1
             }
         }
 
-        public static int FindFirst(int[] arr, int x)
+        public  int FindFirst(int[] arr, int x)
         {
             Console.Write("Массив: ");
             for (int i = 0; i < arr.Length; i++)
@@ -215,7 +215,7 @@ namespace Lab_1
             return -1;
         }
 
-        public static int MaxAbs(int[] arr)
+        public  int MaxAbs(int[] arr)
         {
             Console.Write("Массив: ");
             for (int i = 0; i < arr.Length; i++)
@@ -237,7 +237,7 @@ namespace Lab_1
             return max_id;
         }
 
-        public static int[] Add(int[] arr, int[] ins, int pos)
+        public  int[] Add(int[] arr, int[] ins, int pos)
         {   
             if (pos <= 0)
             {
@@ -278,7 +278,7 @@ namespace Lab_1
             return result;
         }
 
-        public static int[] ReverseBack(int[] arr)
+        public  int[] ReverseBack(int[] arr)
         {
             Console.Write("Массив: ");
             for (int i = 0; i < arr.Length; i++)
@@ -296,7 +296,7 @@ namespace Lab_1
             return result;
         }
 
-        public static int[] FindAll(int[] arr, int x)
+        public  int[] FindAll(int[] arr, int x)
         {
             Console.Write("Массив: ");
             for (int i = 0; i < arr.Length; i++)
@@ -319,7 +319,7 @@ namespace Lab_1
         }
 
 
-        static void Main(string[] args)
+         void Main(string[] args)
         {
             Random random = new Random();
             Program program = new Program(random);
@@ -699,7 +699,14 @@ namespace Lab_1
                     arr[i] = random.Next(1, 10);
                 }
                 int result = FindFirst(arr, x);
-                Console.WriteLine("Индекс первого вхождения: " + result);
+                if (result == -1)
+                {
+                    Console.WriteLine("Такого числа в массиве не существует");
+                }
+                else
+                {
+                    Console.WriteLine("Индекс первого вхождения: " + result);
+                }
             }
             else
             {
