@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq; // библиотека для проверки наличия дубликатов
@@ -8,18 +8,18 @@ using System.Xml.Serialization;
 public class Tasks
 {
     // Задание 1: Проверка наличия хотя бы двух одинаковых элементов в списке
-    public static bool HasDuplicates(List<int> list)
+    public static bool HasDuplicates<any>(List<any> list)
     {
         return list.GroupBy(x => x).Any(g => g.Count() > 1);
     }
 
     // Задание 2: Удаление первого вхождения заданного элемента из связанного списка
-    public static void RemoveFirstOccurrence(LinkedList<int> list, int element)
+    public static void RemoveFirstOccurrence<any>(LinkedList<any> list, any element)
     {
         var node = list.First;
         while (node != null)
         {
-            if (node.Value == element)
+            if (EqualityComparer<any>.Default.Equals(node.Value, element))
             {
                 list.Remove(node);
                 break;
@@ -100,7 +100,7 @@ public class Tasks
     // 1 Вспомогательный метод для ввода списка чисел с клавиатуры 1
     private static List<int> ReadListFromConsole()
     {
-        Console.WriteLine("Введите целые числа через пробел:");
+        Console.WriteLine("Введите елементы через пробел:");
         var input = Console.ReadLine();
         var numbers = new List<int>();
         var parts = input.Split(' ');
@@ -113,7 +113,7 @@ public class Tasks
         }
         
         // проверка каждой части строки на то, является ли она целым числом
-        foreach (var part in parts)
+        /*foreach (var part in parts)
         {
             if (int.TryParse(part, out int number))
             {
@@ -124,7 +124,7 @@ public class Tasks
                 Console.WriteLine($"Некорректное значение: {part}. Пожалуйста, введите целые числа через пробел:");
                 ReadListFromConsole();
             }
-        }
+        }*/
         return numbers;
     }
     
@@ -144,7 +144,7 @@ public class Tasks
         }
         
         // проверка каждой части строки на то, является ли она целым числом
-        foreach (var part in parts)
+        /*foreach (var part in parts)
         {
             if (int.TryParse(part, out int number))
             {
@@ -155,7 +155,7 @@ public class Tasks
                 Console.WriteLine($"Некорректное значение: {part}. Пожалуйста, введите целые числа через пробел:");
                 ReadListFromConsole();
             }
-        }
+        }*/
         return new LinkedList<int>(numbers);
     }
 
@@ -198,22 +198,6 @@ public class Tasks
         Console.WriteLine("Введите текст на русском языке: ");
         return Console.ReadLine();
     }
-    
-    /*
-    public class Participant
-    {
-        [XmlElement("LastName")]
-        public string LastName { get; set; }
-
-        [XmlElement("FirstName")]
-        public string FirstName { get; set; }
-
-        [XmlElement("Class")]
-        public int Class { get; set; }
-
-        [XmlElement("Score")]
-        public int Score { get; set; }
-    }*/
     
     // класс, который будет использоваться для сереализации и десереализации участников
     public class Participant
